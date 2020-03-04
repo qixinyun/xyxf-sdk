@@ -1,0 +1,11 @@
+phpfpm:
+  image: "registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front"
+  volumes:
+   - ./:/var/www/html/
+  cap_add:
+   - SYS_PTRACE
+  environment:
+   - APP_ENV=dev
+  external_links:
+   - "xyxf-backend-nginx"
+  container_name: xyxf-sdk-phpfpm

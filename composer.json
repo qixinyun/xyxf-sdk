@@ -1,0 +1,31 @@
+{
+    "name": "qixinyun/xyxf-sdk",
+    "description": "xinyongxiufu sdk",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "qixinyun",
+            "email": "alex@qixinyun.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "chloroplast/monkey-framework": "dev-master"
+    },
+    "require-dev": {
+        "chloroplast/marmot-dev-pacakges": "dev-master"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Sdk\\": "src"
+        }
+    }
+}

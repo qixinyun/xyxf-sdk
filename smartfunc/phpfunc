@@ -1,0 +1,41 @@
+#!/bin/bash
+
+function cbf {
+	docker exec $1 vendor/bin/phpcbf
+}
+
+function cs {
+	docker exec $1 vendor/bin/phpcs --report-full
+}
+
+function composer {
+	docker exec $1 composer update
+}
+
+function cpd {
+	docker exec $1 vendor/bin/phpcpd --names-exclude templateDefine.php src
+}
+
+function unit {
+	docker exec $1 vendor/bin/phpunit --stop-on-failure
+}
+
+function unitFile {
+	docker exec $1 vendor/bin/phpunit --filter="$2"
+}
+
+function unitCover {
+	docker exec $1 phpdbg -qrr ./vendor/bin/phpunit --debug --stop-on-failure --coverage-html ./Docs/UnitTestCover
+}
+
+function unitFileCover {
+	docker exec $1 phpdbg -qrr ./vendor/bin/phpunit --filter="$2" --debug --stop-on-failure --coverage-html ./Docs/UnitTestCoverTemp
+}
+
+function md {
+	docker exec -i $1 vendor/bin/phpmd ./src text ruleset.xml
+	if [ $? -eq 0 ]
+	then
+		echo 'check mess complete'
+	fi
+}

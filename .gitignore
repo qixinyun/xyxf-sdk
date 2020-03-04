@@ -1,0 +1,13 @@
+vendor
+config.php
+!src/config.php
+Global/attachment
+.DS_Store
+docs/UnitTestCover
+route.cache
+debug
+!cache/proxies/.gitkeep
+cache/proxies/*.php
+key.pem
+*.xmind
+utc
