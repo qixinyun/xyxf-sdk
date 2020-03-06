@@ -7,6 +7,7 @@ use Marmot\Framework\Adapter\Restful\GuzzleAdapter;
 use Sdk\Crew\Model\Crew;
 use Sdk\Crew\Model\NullCrew;
 use Sdk\Crew\Translator\CrewRestfulTranslator;
+use Marmot\Core;
 
 use Sdk\Common\Adapter\CommonMapErrorsTrait;
 use Sdk\Common\Adapter\FetchAbleRestfulAdapterTrait;
@@ -124,12 +125,11 @@ class CrewRestfulAdapter extends GuzzleAdapter implements ICrewAdapter
     }
 
     protected function addAction(Crew $crew) : bool
-    {
+    {        
         $data = $this->getTranslator()->objectToArray(
             $crew,
-            array('realName', 'avatar', 'gender')
+            array('realName', 'cellphone', 'password', 'avatar', 'cardId','roles','userGroup')
         );
-        
         $this->post(
             $this->getResource(),
             $data
@@ -147,7 +147,7 @@ class CrewRestfulAdapter extends GuzzleAdapter implements ICrewAdapter
     {
         $data = $this->getTranslator()->objectToArray(
             $crew,
-            array('realName', 'avatar', 'gender')
+            array('realName', 'cardId', 'avatar','roles')
         );
 
         $this->patch(

@@ -67,6 +67,12 @@ abstract class User implements IObject, IEnableAble, IOperatAble
      * @var [string]
      */
     private $identify;
+    /**
+     * [$cardId 身份证号]
+     * @var [string]
+     */
+    protected $cardId;
+
 
     public function __construct(int $id = 0)
     {
@@ -79,6 +85,7 @@ abstract class User implements IObject, IEnableAble, IOperatAble
         $this->avatar = array();
         $this->gender = self::GENDER['GENDER_MALE'];
         $this->identify = '';
+        $this->cardId = '';
         $this->createTime = 0;
         $this->updateTime = 0;
         $this->status = IEnableAble::STATUS['ENABLED'];
@@ -96,6 +103,7 @@ abstract class User implements IObject, IEnableAble, IOperatAble
         unset($this->avatar);
         unset($this->gender);
         unset($this->identify);
+        unset($this->cardId);
         unset($this->createTime);
         unset($this->updateTime);
         unset($this->status);
@@ -191,6 +199,17 @@ abstract class User implements IObject, IEnableAble, IOperatAble
     {
         return $this->identify;
     }
+
+    public function getCardId() : string
+    {
+        return $this->cardId;
+    }
+
+    public function setCardId(string $cardId) : void
+    {
+        $this->cardId = $cardId;
+    }
+    
     /**
      * [generateIdentify 生成登录标识]
      * @return [string]  [返回类型]
@@ -258,6 +277,11 @@ abstract class User implements IObject, IEnableAble, IOperatAble
     {
         return $this->getRepository();
     }
+
+    // protected function getIOperatAbleRepository() : IOperatAbleRepository
+    // {
+    //     return $this->getRepository();
+    // }
 
     abstract protected function getRepository();
 }

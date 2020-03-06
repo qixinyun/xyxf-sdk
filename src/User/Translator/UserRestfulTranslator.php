@@ -48,6 +48,9 @@ abstract class UserRestfulTranslator implements IRestfulTranslator
         if (isset($attributes['avatar'])) {
             $user->setAvatar($attributes['avatar']);
         }
+        if (isset($attributes['cardID'])) {
+            $user->setCardId($attributes['cardID']);
+        }
         if (isset($attributes['gender'])) {
             $user->setGender($attributes['gender']);
         }
@@ -88,7 +91,8 @@ abstract class UserRestfulTranslator implements IRestfulTranslator
                 'password',
                 'oldPassword',
                 'avatar',
-                'gender'
+                'gender',
+                'cardId',
             );
         }
 
@@ -115,6 +119,9 @@ abstract class UserRestfulTranslator implements IRestfulTranslator
         }
         if (in_array('avatar', $keys)) {
             $attributes['avatar'] = $user->getAvatar();
+        }
+        if (in_array('cardId', $keys)) {
+            $attributes['cardID'] = $user->getCardId();
         }
         if (in_array('gender', $keys)) {
             $attributes['gender'] = $user->getGender();
